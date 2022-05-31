@@ -17,6 +17,13 @@ export class HeroesComponent implements OnInit {
 
   constructor() { }
 
+  //add Click event handler define selected hero
+  selectedHero? : Hero;
+  // selectedHero is now defined in the method as hero
+  onSelect (hero: Hero){
+    this.selectedHero = hero
+  }
+
   ngOnInit(): void {
   }
 

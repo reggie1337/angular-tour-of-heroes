@@ -8,6 +8,7 @@ import { Hero } from '../hero';
 export class HeroDetailComponent implements OnInit {
 //now makes hero-detail ngIf statement work
   @Input() hero? : Hero;
+  
   constructor() { }
 
   ngOnInit(): void {

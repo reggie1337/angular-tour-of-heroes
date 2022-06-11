@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heros';
+import { MessageService } from '../message.service';
 import { HeroService } from '../hero.service';
 @Component({
   selector: 'app-heroes',
@@ -8,6 +8,7 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  selectedHero? : Hero;
 //make heroes property a declalaration
   heroes : Hero [] = [];
 //refactored hero property to be of type Hero
@@ -16,22 +17,23 @@ export class HeroesComponent implements OnInit {
     name : "Windstorm"
   };
 
-  constructor(private heroService : HeroService) { }
+  constructor(private heroService : HeroService, private messageService: MessageService) { }
 
-  //add Click event handler define selected hero
-  selectedHero? : Hero;
+
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+    //add Click event handler define selected hero
   // selectedHero is now defined in the method as hero
   onSelect (hero: Hero){
-    this.selectedHero = hero
+    this.selectedHero = hero;
+    this.messageService.add('HeroesComponent: Selected hero id=${hero.id}');
   }
 //method to get heroes from service
 //asynchronus approach whi can happen when requested not immediately
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
-  }
-
-  ngOnInit(): void {
-    this.getHeroes();
   }
 
 

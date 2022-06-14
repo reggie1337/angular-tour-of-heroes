@@ -24,14 +24,9 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
     this.getHeroes();
   }
-    //add Click event handler define selected hero
-  // selectedHero is now defined in the method as hero
-  onSelect (hero: Hero){
-    this.selectedHero = hero;
-    this.messageService.add("HeroesComponent: Selected hero id = ${hero.id}")
-  }
+
 //method to get heroes from service
-//asynchronus approach whi can happen when requested not immediately
+//asynchronus approach happens when requested not immediately
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }

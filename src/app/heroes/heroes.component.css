@@ -3,7 +3,7 @@
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    width: 5rem;
   }
   
   .heroes li {
@@ -16,8 +16,8 @@
     position: relative;
     left: 0;
     background-color: #EEE;
-    margin: .5em;
-    padding: 0;
+    margin: 1rem;
+    padding: 10%;
     border-radius: 4px;
     display: flex;
     align-items: stretch;

@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component'
+import { MatButtonModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component'
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

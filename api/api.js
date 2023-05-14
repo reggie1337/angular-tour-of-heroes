@@ -1,11 +1,17 @@
 const {Sequelize} = require ('sequelize');
 const express = require ('express');
-const connectString = 'postgresql://tmp:none@localhost:5432/heroes';
-const heroesController = require('./controllers/heroescController');
+const connectString = 'postgresql://local:none@localhost:5432/heroes';
+// const heroesController = require('./api.js');
 
 const sequelize = new Sequelize(connectString);
 
 const Hero = sequelize.define('hero', {
+    id:{
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+
     name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -13,12 +19,13 @@ const Hero = sequelize.define('hero', {
     power: {
         type: Sequelize.STRING,
         allowNull: false,
-    },
+    },},{
+        tableName: 'heroes',
 });
 
-await sequelize.sync();
-
-( async() =>{   
+const startServer = async () => {
+    await sequelize.sync();
+ 
     try {
         await sequelize.authenticate();
         await sequelize.sync();
@@ -26,18 +33,30 @@ await sequelize.sync();
     } catch (error) {
     console.error('failed')
     }
-})();
+};
 
 const app = express();
 
-app.get('/api/heroes',(req, res) => {
-    const heroes = Hero.findAll();
+app.get('/api/heroes', async (req, res) => {
+   try { 
+    const heroes = await Hero.findAll();
     res.json(heroes);
+   } catch (error){
+    console.error(error);
+    res.status(500).json({error: 'o'})
+   }
 });
 
-app.use('/api',heroesController);
+const logMiddleware = (req, res, next)=> {
+    console.log('recieved')
+    next();
+};
 
-app.listen(3000,() => {
-    console.log('Server listening on port 3000');
+app.use(logMiddleware);
+
+app.listen(4200,() => {
+    console.log('Server listening on port 4200');
  });
+
  
+startServer();

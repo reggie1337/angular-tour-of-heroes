@@ -4,7 +4,8 @@ const connectString = 'postgresql://local:none@localhost:5432/heroes';
 
 
 const sequelize = new Sequelize(connectString);
-
+const cors = require ('cors');
+const port = 3000;
 const Hero = sequelize.define('hero', {
     id:{
         type: Sequelize.INTEGER,
@@ -44,6 +45,11 @@ const startServer = async () => {
 
 const app = express();
 
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
+
+
 app.get('/api/heroes', async (req, res) => {
    try { 
     const heroes = await Hero.findAll({
@@ -63,8 +69,8 @@ const logMiddleware = (req, res, next)=> {
 
 app.use(logMiddleware);
 
-app.listen(4200,() => {
-    console.log('Server listening on port 4200');
+app.listen(3000,() => {
+    console.log(`Server listening on port ${port}`);
  });
 
  

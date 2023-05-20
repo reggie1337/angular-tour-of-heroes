@@ -4,7 +4,7 @@ export const environment = {
       url: 'postgresql://local:none@localhost:5432/heroes',
     },
     api: {
-      endpoint: 'http://localhost:4200/api/heroes',
+      endpoint: 'http://localhost:3000/api/heroes',
       apiKey: '1qaz2wsx3edc',
     },
   },
@@ -13,7 +13,7 @@ export const environment = {
       url: 'postgresql://local:none@localhost:5432/heroes',
     },
     api: {
-      endpoint: 'http://localhost:4200/api/heroes',
+      endpoint: 'http://localhost:3000/api/heroes',
       apiKey: '1qaz2wsx3edc',
     },
   },

@@ -27,7 +27,8 @@ export class HeroService {
   ) {}
   //calls hero [] from a remote server
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl).pipe(
+    const heroesUrl = 'http://localhost:3000/api/heroes';
+    return this.http.get<Hero[]>(heroesUrl).pipe(
       tap((_) => this.log('fetched heroes')),
       catchError(this.handleError<Hero[]>('getHeroes', []))
     );

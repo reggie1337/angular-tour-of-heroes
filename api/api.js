@@ -1,7 +1,7 @@
 const {Sequelize} = require ('sequelize');
 const express = require ('express');
 const connectString = 'postgresql://local:none@localhost:5432/heroes';
-// const heroesController = require('./api.js');
+
 
 const sequelize = new Sequelize(connectString);
 
@@ -19,13 +19,20 @@ const Hero = sequelize.define('hero', {
     power: {
         type: Sequelize.STRING,
         allowNull: false,
-    },},{
+    },
+    createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+    },
+    updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+    }},{
         tableName: 'heroes',
+    
 });
 
-const startServer = async () => {
-    await sequelize.sync();
- 
+const startServer = async () => { 
     try {
         await sequelize.authenticate();
         await sequelize.sync();
@@ -39,11 +46,13 @@ const app = express();
 
 app.get('/api/heroes', async (req, res) => {
    try { 
-    const heroes = await Hero.findAll();
+    const heroes = await Hero.findAll({
+        attributes : ['id','name','power']
+    });
     res.json(heroes);
    } catch (error){
     console.error(error);
-    res.status(500).json({error: 'o'})
+    res.status(500).json({error: 'shoot dang'})
    }
 });
 

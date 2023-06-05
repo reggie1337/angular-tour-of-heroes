@@ -1,7 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-/* Application-wide Styles */
+
 h1 {
-    color: #369;
+    color: #333;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 250%;
   }
@@ -10,19 +9,17 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
   }
-  body {
-    margin: 2em;
-  }
+
   body, input[type="text"], button {
     color: #333;
     font-family: Cambria, Georgia, serif;
   }
   button {
-    background-color: #eee;
+    background-color: #fa0202;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    color: black;
+    color: whitesmoke;
     font-size: 1.2rem;
     padding: 1rem;
     margin-right: 1rem;
@@ -30,7 +27,7 @@ h1 {
     margin-top: 1rem;
   }
   button:hover {
-    background-color: black;
+    background-color: #333;
     color: white;
   }
   button:disabled {
@@ -38,8 +35,19 @@ h1 {
     color: #aaa;
     cursor: auto;
   }
-  
-  /* everywhere else */
+  .col-2 {
+    background-color: white;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  .flex{
+    max-height: 100vh;
+  }
+
   * {
     font-family: Arial, Helvetica, sans-serif;
   }

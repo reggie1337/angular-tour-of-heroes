@@ -5,8 +5,8 @@ h2{
 }
 
 .clear{
-    color: #333;
-    background-color: #eee;
+    color: whitesmoke;
+    background-color: red;
     margin-bottom: 12px;
     padding: 1rem;
     border-radius: 4px;
@@ -15,6 +15,6 @@ h2{
 
 .clear:hover {
     color: white;
-    background-color: #42545C;
+    background-color: #333;
     
 }

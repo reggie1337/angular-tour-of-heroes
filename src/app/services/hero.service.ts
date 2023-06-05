@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 // import { HerosService } from './mock-heros';
-import { Hero } from './hero';
+import { Hero } from '../views/heroes/hero';
 import { from, Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -35,7 +35,7 @@ export class HeroService {
   }
   //find requires predicate
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `http://localhost:3000/api/heroes/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap((_) => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))

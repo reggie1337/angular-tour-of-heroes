@@ -1,22 +1,29 @@
 h1{
     margin-bottom: 0;
 }
+nav {
+    position: fixed;
+    top: 2;
+    left: 0;
+}
+
 nav a {
     padding: 1em;
     text-decoration: none;
     margin-top: 10px;
     margin: 5px;
-    display: inline-block;
-    background-color: #e8e8e8;
-    color:#3d3d3d;
+    background-color:red;
+    color:whitesmoke;
     border-radius: 4px;
+    display: block;
+    
 }
 
 nav a:hover {
     color: white;
-    background-color: #42545c;
+    background-color: #333;
 }
 
 nav a.active {
-    background-color: black;
+    background-color: #333;
 }

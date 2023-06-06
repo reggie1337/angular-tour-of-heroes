@@ -19,10 +19,11 @@ import { MatCardModule } from '@angular/material';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
   ],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     MatButtonModule,
@@ -31,8 +32,7 @@ import { MatCardModule } from '@angular/material';
     HttpClientModule,
     MatCardModule,
     MatExpansionModule,
+    MessagesComponent,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
